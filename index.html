@@ -16,23 +16,48 @@
 /* ===== BODY ===== */
 body {
   font-family: Inter, Arial, sans-serif;
-  background: radial-gradient(circle at top, #020617, #000000);
+  background: #020617;
   color: #f8fafc;
   overflow-x: hidden;
 }
 
-/* ===== STAR BACKGROUND ===== */
-body::before {
-  content: "";
+/* ===== STAR CANVAS ===== */
+#stars {
   position: fixed;
   inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
-    radial-gradient(1px 1px at 30% 80%, #fff, transparent),
-    radial-gradient(1px 1px at 70% 40%, #fff, transparent),
-    radial-gradient(1px 1px at 90% 90%, #fff, transparent);
-  opacity: 0.25;
-  z-index: -1;
+  z-index: -10;
+}
+
+/* ===== SPACE LAYER ===== */
+.space-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -5;
+}
+
+/* Rocket / Shuttle */
+.shuttle {
+  position: absolute;
+  left: -100px;
+  top: 70%;
+  font-size: 64px;
+  transform: rotate(15deg);
+}
+
+/* Astronaut (sideways, tethered) */
+.astronaut {
+  position: absolute;
+  right: -300px;
+  top: 30%;
+  width: 220px;
+  opacity: 0.85;
+  animation: driftSide 18s linear infinite;
+}
+
+@keyframes driftSide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-180px); }
 }
 
 /* ===== LAYOUT ===== */
@@ -99,7 +124,7 @@ section h2 {
   box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
-/* ===== LIST ===== */
+/* ===== ABOUT LIST ===== */
 .card ul {
   padding-left: 20px;
 }
@@ -108,6 +133,21 @@ section h2 {
   margin-bottom: 14px;
   font-size: 18px;
   color: #e5e7eb;
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.skill {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid #38bdf8;
+  background: #020617;
+  font-size: 16px;
 }
 
 /* ===== PROJECTS ===== */
@@ -143,6 +183,21 @@ footer {
 
 <body>
 
+<canvas id="stars"></canvas>
+
+<div class="space-layer">
+  <div class="shuttle" id="shuttle">🚀</div>
+
+  <!-- Astronaut SVG -->
+  <svg class="astronaut" viewBox="0 0 300 120">
+    <path d="M0 60 C80 40, 160 80, 240 60"
+          stroke="#94a3b8" stroke-width="2" fill="none"/>
+    <circle cx="260" cy="60" r="22" fill="#e5e7eb"/>
+    <rect x="220" y="40" width="40" height="40" rx="12" fill="#cbd5f5"/>
+    <rect x="195" y="45" width="22" height="30" rx="6" fill="#94a3b8"/>
+  </svg>
+</div>
+
 <div class="container">
 
   <!-- HERO -->
@@ -164,11 +219,24 @@ footer {
     <h2>About Me</h2>
     <div class="card">
       <ul>
-        <li>Computer Science student passionate about data and intelligent systems</li>
-        <li>Hands-on experience with AI workflow automation and prompt engineering</li>
-        <li>Built AI agents for real-world, everyday use cases</li>
-        <li>Focused on solving practical problems using technology</li>
+        <li>Computer Science student with a strong interest in data analysis and intelligent systems</li>
+        <li>Hands-on experience in AI workflow automation and prompt engineering</li>
+        <li>Designed and built AI agents for real-world, everyday use cases</li>
+        <li>Focused on solving practical problems using scalable technology solutions</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <h2>Skills</h2>
+    <div class="card skills">
+      <span class="skill">AI Agent Building</span>
+      <span class="skill">Prompt Engineering</span>
+      <span class="skill">AI Workflow Automation</span>
+      <span class="skill">Python</span>
+      <span class="skill">Data Analysis</span>
+      <span class="skill">Problem Solving</span>
     </div>
   </section>
 
@@ -209,6 +277,54 @@ footer {
   </footer>
 
 </div>
+
+<script>
+/* ===== STARFIELD ===== */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+const stars = Array.from({ length: 1200 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 1.5,
+  s: Math.random() * 0.4 + 0.1
+}));
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#ffffff";
+
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.fill();
+    star.y -= star.s;
+    if (star.y < 0) {
+      star.y = canvas.height;
+      star.x = Math.random() * canvas.width;
+    }
+  });
+
+  requestAnimationFrame(animateStars);
+}
+animateStars();
+
+/* ===== ROCKET SCROLL MOTION ===== */
+window.addEventListener("scroll", () => {
+  const shuttle = document.getElementById("shuttle");
+  const scrollY = window.scrollY;
+
+  shuttle.style.transform =
+    `translateX(${scrollY * 0.3}px) translateY(${-scrollY * 0.15}px) rotate(15deg)`;
+});
+</script>
 
 </body>
 </html>
