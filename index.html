@@ -1,312 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<title>Guru Deep Ravilla | Space Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-/* ================= RESET ================= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* ================= BASE ================= */
-body {
-  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  background: #000;
-  color: #e5e7eb;
-  overflow-x: hidden;
-}
-
-/* ================= STAR CANVAS ================= */
-#galaxy {
-  position: fixed;
-  inset: 0;
-  z-index: -10;
-}
-
-/* ================= SPACE OBJECTS ================= */
-.space {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -5;
-}
-
-/* Moon */
-.moon {
-  position: absolute;
-  top: 80px;
-  right: 120px;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, #ffffff, #cbd5f5 55%, #64748b);
-  box-shadow: 0 0 120px rgba(203,213,245,.9);
-  transform: translateY(var(--moonY));
-}
-
-/* Rocket (SVG container) */
-.rocket {
-  position: absolute;
-  left: 60px;
-  bottom: -240px;
-  width: 80px;
-  transform: translateY(var(--rocketY));
-}
-
-/* Astronaut */
-.astronaut {
-  position: absolute;
-  right: 80px;
-  top: 55%;
-  width: 120px;
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-30px); }
-  100% { transform: translateY(0); }
-}
-
-/* ================= LAYOUT ================= */
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 140px 24px;
-}
-
-/* ================= HERO ================= */
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.hero img {
-  width: 100%;
-  max-height: 520px;
-  object-fit: cover;
-  border-radius: 28px;
-  box-shadow: 0 40px 120px rgba(56,189,248,.4);
-}
-
-.hero h1 {
-  font-size: 64px;
-  line-height: 1.1;
-}
-
-.hero span { color: #38bdf8; }
-
-.hero p {
-  margin-top: 20px;
-  font-size: 22px;
-  color: #cbd5f5;
-}
-
-/* ================= SECTIONS ================= */
-section { margin-top: 180px; }
-
-section h2 {
-  font-size: 42px;
-  margin-bottom: 30px;
-  color: #38bdf8;
-}
-
-/* ================= GLASS CARD ================= */
-.card {
-  background: rgba(15,23,42,.7);
-  backdrop-filter: blur(18px);
-  padding: 48px;
-  border-radius: 28px;
-  box-shadow: 0 30px 90px rgba(0,0,0,.6);
-}
-
-/* ================= SKILLS ================= */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
-
-.skill {
-  padding: 14px 26px;
-  border-radius: 999px;
-  border: 1px solid #38bdf8;
-  background: rgba(2,6,23,.9);
-}
-
-/* ================= PROJECTS ================= */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px,1fr));
-  gap: 50px;
-}
-
-.project a {
-  color: #38bdf8;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  margin: 200px 0 80px;
-  text-align: center;
-  color: #94a3b8;
-}
-</style>
+  <title>Guru Deep Ravilla</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+    img {
+      width: 100%;
+      max-width: 600px;
+      display: block;
+      margin-bottom: 40px;
+      border: 4px solid white;
+    }
+    h1 {
+      font-size: 48px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- STARFIELD -->
-<canvas id="galaxy"></canvas>
-
-<!-- SPACE OBJECTS -->
-<div class="space">
-  <div class="moon"></div>
-
-  <!-- Rocket SVG -->
-  <svg class="rocket" viewBox="0 0 64 128">
-    <defs>
-      <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#facc15"/>
-        <stop offset="100%" stop-color="#ef4444"/>
-      </linearGradient>
-    </defs>
-    <polygon points="32,0 50,40 32,32 14,40" fill="#e5e7eb"/>
-    <rect x="22" y="40" width="20" height="50" rx="10" fill="#94a3b8"/>
-    <polygon points="22,90 32,120 42,90" fill="url(#flame)">
-      <animateTransform
-        attributeName="transform"
-        type="scale"
-        from="1"
-        to="1.3"
-        dur="0.15s"
-        repeatCount="indefinite"
-        direction="alternate"/>
-    </polygon>
-  </svg>
-
-  <!-- Astronaut SVG -->
-  <svg class="astronaut" viewBox="0 0 100 160">
-    <circle cx="50" cy="30" r="25" fill="#e5e7eb"/>
-    <rect x="25" y="60" width="50" height="70" rx="20" fill="#cbd5f5"/>
-    <line x1="25" y1="90" x2="5" y2="120" stroke="#cbd5f5" stroke-width="8"/>
-    <line x1="75" y1="90" x2="95" y2="120" stroke="#cbd5f5" stroke-width="8"/>
-  </svg>
-</div>
-
 <div class="container">
-
-  <!-- HERO -->
-  <div class="hero">
-    <img src="hero.jpg" alt="Guru Deep Ravilla">
-    <div>
-      <h1>Guru Deep <span>Ravilla</span></h1>
-      <p>
-        Pursuing Master’s in Data Science<br>
-        University of Europe, Berlin, Germany
-      </p>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section>
-    <h2>About Me</h2>
-    <div class="card">
-      <p>
-        I am a Computer Science student focused on visualizing data,
-        understanding intelligent systems, and applying AI to real-world problems.
-        <br><br>
-        I have hands-on experience with AI workflow automation, prompt engineering,
-        and building AI agents for everyday use.
-        <br><br>
-        I care deeply about meaningful, practical problem solving.
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <h2>Skills</h2>
-    <div class="card skills">
-      <div class="skill">AI Agent Building</div>
-      <div class="skill">Prompt Engineering</div>
-      <div class="skill">AI Automation</div>
-      <div class="skill">Python</div>
-      <div class="skill">Data Analysis</div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section>
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card project">
-        <h3>AI-Powered Professional Email Drafting Assistant</h3>
-        <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
-          View GitHub →
-        </a>
-      </div>
-
-      <div class="card project">
-        <h3>Hybrid Expert System – Food Nutrition</h3>
-        <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
-          View GitHub →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 Guru Deep Ravilla · Exploring Beyond Earth
-  </footer>
-
+  <img src="hero.jpg" alt="Guru Deep Ravilla">
+  <h1>Guru Deep Ravilla</h1>
+  <p>Pursuing Master’s in Data Science<br>
+     University of Europe, Berlin</p>
 </div>
-
-<script>
-/* ================= GALAXY STARFIELD ================= */
-const canvas = document.getElementById("galaxy");
-const ctx = canvas.getContext("2d");
-
-function resize() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
-resize();
-addEventListener("resize", resize);
-
-const stars = Array.from({length: 1200}, () => ({
-  x: Math.random()*canvas.width,
-  y: Math.random()*canvas.height,
-  r: Math.random()*1.6,
-  s: Math.random()*0.6 + 0.2
-}));
-
-function animateStars() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "#fff";
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI*2);
-    ctx.fill();
-    star.y -= star.s;
-    if (star.y < 0) star.y = canvas.height;
-  });
-  requestAnimationFrame(animateStars);
-}
-animateStars();
-
-/* ================= SCROLL PARALLAX ================= */
-addEventListener("scroll", () => {
-  document.documentElement.style.setProperty("--rocketY", `${-scrollY * 0.6}px`);
-  document.documentElement.style.setProperty("--moonY", `${scrollY * 0.15}px`);
-});
-</script>
 
 </body>
 </html>
