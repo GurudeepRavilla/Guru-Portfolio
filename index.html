@@ -2,257 +2,252 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Guru Deep Ravilla | Portfolio</title>
+<title>Guru Deep Ravilla | Space Portfolio</title>
 
 <style>
-/* ---------------- RESET ---------------- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-/* ---------------- BODY ---------------- */
+/* BODY */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #0b1026, #020617);
-    color: #e5e7eb;
-    overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #050b2e, #00010f);
+  color: #e5e7eb;
+  overflow-x: hidden;
 }
 
-/* ---------------- STARS ---------------- */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-        radial-gradient(1px 1px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 80% 30%, white, transparent),
-        radial-gradient(2px 2px at 50% 70%, white, transparent),
-        radial-gradient(1.5px 1.5px at 90% 90%, white, transparent);
-    animation: stars 80s linear infinite;
-    opacity: 0.7;
-    z-index: -2;
+/* STAR FIELD */
+.stars {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(2px 2px at 30% 80%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 70% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 90%, #fff, transparent);
+  animation: starMove 120s linear infinite;
+  z-index: -3;
 }
 
-@keyframes stars {
-    from { transform: translateY(0); }
-    to { transform: translateY(-2000px); }
+@keyframes starMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-3000px); }
 }
 
-/* ---------------- MOON ---------------- */
+/* MOON */
 .moon {
-    position: fixed;
-    top: 80px;
-    right: 80px;
-    width: 120px;
-    height: 120px;
-    background: radial-gradient(circle, #f8fafc, #cbd5f5);
-    border-radius: 50%;
-    box-shadow: 0 0 40px #cbd5f5;
-    z-index: -1;
+  position: fixed;
+  top: 60px;
+  right: 80px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f8fafc, #cbd5f5);
+  box-shadow: 0 0 80px #cbd5f5;
+  z-index: -2;
 }
 
-/* ---------------- ROCKET ---------------- */
+/* ROCKET */
 .rocket {
-    position: fixed;
-    left: 40px;
-    bottom: -150px;
-    font-size: 60px;
-    transition: transform 0.2s linear;
+  position: fixed;
+  left: 60px;
+  bottom: -200px;
+  font-size: 80px;
+  transition: transform 0.2s linear;
 }
 
-/* ---------------- LAYOUT ---------------- */
+/* ASTRONAUT */
+.astronaut {
+  position: fixed;
+  right: 120px;
+  bottom: 200px;
+  font-size: 70px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+/* LAYOUT */
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 120px 20px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 140px 20px;
 }
 
-/* ---------------- HERO ---------------- */
+/* HERO */
 .hero {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  flex-wrap: wrap;
 }
 
 .hero img {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #38bdf8;
-    box-shadow: 0 0 40px #38bdf8;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #38bdf8;
+  box-shadow: 0 0 80px #38bdf8;
 }
 
 .hero h1 {
-    font-size: 52px;
+  font-size: 60px;
 }
 
 .hero h1 span {
-    color: #38bdf8;
+  color: #38bdf8;
 }
 
 .hero p {
-    margin-top: 12px;
-    font-size: 20px;
-    color: #cbd5f5;
+  font-size: 22px;
+  margin-top: 12px;
+  color: #cbd5f5;
 }
 
-/* ---------------- SECTIONS ---------------- */
+/* SECTION */
 section {
-    margin-top: 120px;
+  margin-top: 160px;
 }
 
 section h2 {
-    font-size: 36px;
-    color: #38bdf8;
-    margin-bottom: 30px;
+  font-size: 40px;
+  color: #38bdf8;
+  margin-bottom: 30px;
 }
 
-/* ---------------- CARD ---------------- */
+/* CARD */
 .card {
-    background: rgba(30, 41, 59, 0.85);
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.85);
+  padding: 50px;
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
 }
 
-/* ---------------- SKILLS ---------------- */
+/* SKILLS */
 .skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
 }
 
 .skill {
-    padding: 12px 20px;
-    border-radius: 25px;
-    background: #020617;
-    border: 1px solid #38bdf8;
-    font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 30px;
+  border: 1px solid #38bdf8;
+  background: #020617;
 }
 
-/* ---------------- PROJECTS ---------------- */
+/* PROJECTS */
 .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 50px;
 }
 
 .project a {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: bold;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* ---------------- FOOTER ---------------- */
+/* FOOTER */
 footer {
-    margin-top: 150px;
-    text-align: center;
-    color: #94a3b8;
+  margin-top: 180px;
+  text-align: center;
+  color: #94a3b8;
 }
 </style>
 </head>
 
 <body>
 
+<div class="stars"></div>
 <div class="moon"></div>
-<div class="rocket" id="rocket">🚀</div>
+<div class="rocket" id="rocket">🚀🔥</div>
+<div class="astronaut">👨‍🚀</div>
 
 <div class="container">
 
-    <!-- HERO -->
-    <div class="hero">
-        <img src="./images/profile.jpg" alt="Guru Deep Ravilla">
-        <div>
-            <h1>Guru Deep <span>Ravilla</span></h1>
-            <p>
-                Pursuing Master’s in Data Science<br>
-                University of Europe, Berlin, Germany
-            </p>
-        </div>
+  <!-- HERO -->
+  <div class="hero">
+    <img src="./images/beach.jpg" alt="Guru Deep Ravilla">
+    <div>
+      <h1>Guru Deep <span>Ravilla</span></h1>
+      <p>
+        Pursuing Master’s in Data Science<br>
+        University of Europe, Berlin, Germany
+      </p>
     </div>
+  </div>
 
-    <!-- ABOUT -->
-    <section>
-        <h2>About Me</h2>
-        <div class="card">
-            <p>
-                I am a Computer Science student who enjoys visualizing data,
-                understanding intelligent systems, and learning how technology
-                impacts the real world.
-                <br><br>
-                I have hands-on experience in AI workflow automation, prompt
-                engineering, and building AI agents for everyday use cases.
-                <br><br>
-                I deeply care about real-world problem solving and creating
-                practical, meaningful solutions.
-            </p>
-        </div>
-    </section>
+  <!-- ABOUT -->
+  <section>
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I am a Computer Science student who loves visualizing data,
+        learning intelligent systems, and applying technology to
+        real-world problems.
+        <br><br>
+        I have hands-on experience with AI workflow automation,
+        prompt engineering, and building AI agents for everyday use.
+        <br><br>
+        I strongly care about meaningful, and practical problem solving.
+      </p>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section>
-        <h2>Skills</h2>
-        <div class="card skills">
-            <div class="skill">AI Agent Building</div>
-            <div class="skill">Prompt Engineering</div>
-            <div class="skill">AI Workflow Automation</div>
-            <div class="skill">Python</div>
-            <div class="skill">Data Analysis</div>
-        </div>
-    </section>
+  <!-- SKILLS -->
+  <section>
+    <h2>Skills</h2>
+    <div class="card skills">
+      <div class="skill">AI Agent Building</div>
+      <div class="skill">Prompt Engineering</div>
+      <div class="skill">AI Automation</div>
+      <div class="skill">Python</div>
+      <div class="skill">Data Analysis</div>
+    </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <section>
-        <h2>Projects</h2>
-        <div class="projects">
+  <!-- PROJECTS -->
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
 
-            <div class="card project">
-                <h3>AI-Powered Professional Email Drafting Assistant</h3>
-                <p>AI system for drafting professional emails.</p>
-                <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
-                    View GitHub Repository →
-                </a>
-            </div>
+      <div class="card project">
+        <h3>AI-Powered Professional Email Drafting Assistant</h3>
+        <p>AI-based system for professional email generation.</p>
+        <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
+          View GitHub Repository →
+        </a>
+      </div>
 
-            <div class="card project">
-                <h3>Hybrid Expert System – Food Nutrition</h3>
-                <p>Expert system combining logic and rules for nutrition guidance.</p>
-                <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
-                    View GitHub Repository →
-                </a>
-            </div>
+      <div class="card project">
+        <h3>Hybrid Expert System – Food Nutrition</h3>
+        <p>Rule-based expert system for nutrition guidance.</p>
+        <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
+          View GitHub Repository →
+        </a>
+      </div>
 
-        </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section>
-        <h2>Contact</h2>
-        <div class="card">
-            <p>
-                📧 <a href="mailto:gurudeep.chowdary812@gmail.com">gurudeep.chowdary812@gmail.com</a><br><br>
-                🔗 <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">LinkedIn</a><br><br>
-                💻 <a href="https://github.com/GurudeepRavilla" target="_blank">GitHub</a>
-            </p>
-        </div>
-    </section>
-
-    <footer>
-        © 2026 Guru Deep Ravilla · Exploring ideas beyond Earth 🌌
-    </footer>
+  <footer>
+    © 2026 Guru Deep Ravilla · Journey Beyond Earth 🌌
+  </footer>
 
 </div>
 
 <script>
-/* Rocket scroll animation */
 window.addEventListener("scroll", () => {
-    const rocket = document.getElementById("rocket");
-    const scrollY = window.scrollY;
-    rocket.style.transform = `translateY(${-scrollY * 0.3}px)`;
+  const rocket = document.getElementById("rocket");
+  rocket.style.transform = `translateY(${-window.scrollY * 0.4}px)`;
 });
 </script>
 
