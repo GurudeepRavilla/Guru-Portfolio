@@ -2,145 +2,131 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Guru Deep Ravilla | Deep Space</title>
+<title>Guru Deep Ravilla | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 /* ===== RESET ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* ===== BODY ===== */
+/* ===== BASE ===== */
 body {
-  font-family: Inter, Arial, sans-serif;
-  background: radial-gradient(circle at center, #020617, #000000 70%);
-  color: #f8fafc;
-  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+  line-height: 1.6;
 }
 
-/* ===== STAR LAYERS ===== */
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: -20;
-}
-
-/* ===== SPACE OBJECT LANE ===== */
-.space-lane {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 35%;
-  height: 100vh;
-  pointer-events: none;
-  z-index: -5;
-}
-
-/* Rocket */
-.rocket {
-  position: absolute;
-  bottom: -200px;
-  right: 80px;
-  width: 70px;
-  transform: translateY(0);
-}
-
-/* Astronaut */
-.astronaut {
-  position: absolute;
-  top: 30%;
-  right: 120px;
-  width: 120px;
-  opacity: 0.9;
-  animation: floatAstronaut 8s ease-in-out infinite;
-}
-
-@keyframes floatAstronaut {
-  0% { transform: translateY(0) rotate(-4deg); }
-  50% { transform: translateY(-30px) rotate(4deg); }
-  100% { transform: translateY(0) rotate(-4deg); }
-}
-
-/* ===== CONTENT ===== */
+/* ===== LAYOUT ===== */
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
-  padding: 100px 24px;
+  padding: 80px 20px;
 }
 
+/* ===== HERO ===== */
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
   align-items: center;
-}
-
-.hero-intro {
-  font-size: 18px;
-  color: #7dd3fc;
-  margin-bottom: 10px;
 }
 
 .hero img {
   width: 100%;
-  max-height: 600px;
+  max-height: 520px;
   object-fit: cover;
   object-position: center top;
-  border-radius: 28px;
-  box-shadow: 0 40px 120px rgba(56,189,248,0.35);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
 }
 
-h1 { font-size: 58px; }
-h1 span { color: #38bdf8; }
+.hero-intro {
+  font-size: 18px;
+  color: #2563eb;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+h1 span {
+  color: #2563eb;
+}
 
 .hero p {
-  font-size: 22px;
   margin-top: 18px;
-  color: #e5e7eb;
+  font-size: 20px;
+  color: #374151;
 }
 
-section { margin-top: 140px; }
+/* ===== SECTIONS ===== */
+section {
+  margin-top: 120px;
+}
+
 section h2 {
-  font-size: 40px;
-  color: #38bdf8;
-  margin-bottom: 24px;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #111827;
 }
 
+/* ===== CARD ===== */
 .card {
-  background: rgba(15,23,42,0.9);
-  padding: 48px;
-  border-radius: 28px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* ===== LISTS ===== */
-.card ul { padding-left: 20px; }
+/* ===== LIST ===== */
+.card ul {
+  padding-left: 20px;
+}
+
 .card li {
   margin-bottom: 14px;
   font-size: 18px;
+  color: #374151;
 }
 
 /* ===== SKILLS ===== */
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
 }
+
 .skill {
-  padding: 14px 24px;
+  padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid #38bdf8;
-  background: #020617;
+  background: #eef2ff;
+  color: #1e40af;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 /* ===== PROJECTS ===== */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-  gap: 40px;
+  gap: 30px;
 }
-.projects a {
-  color: #38bdf8;
-  font-weight: 600;
+
+.project h3 {
+  margin-bottom: 10px;
+}
+
+.project a {
+  color: #2563eb;
   text-decoration: none;
+  font-weight: 600;
 }
 
 /* ===== CONTACT ===== */
@@ -148,55 +134,42 @@ section h2 {
   display: block;
   font-size: 18px;
   margin-bottom: 12px;
-  color: #38bdf8;
+  color: #2563eb;
   text-decoration: none;
 }
 
+/* ===== FOOTER ===== */
 footer {
-  margin: 160px 0 40px;
+  margin-top: 140px;
   text-align: center;
-  color: #94a3b8;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- STAR DEPTH LAYERS -->
-<canvas id="starsFar"></canvas>
-<canvas id="starsMid"></canvas>
-<canvas id="starsNear"></canvas>
-
-<!-- SPACE OBJECT LANE -->
-<div class="space-lane">
-  <!-- Rocket SVG -->
-  <svg class="rocket" id="rocket" viewBox="0 0 60 120">
-    <polygon points="30,0 50,40 30,30 10,40" fill="#e5e7eb"/>
-    <rect x="20" y="40" width="20" height="50" rx="10" fill="#94a3b8"/>
-    <polygon points="20,90 30,120 40,90" fill="#f97316"/>
-  </svg>
-
-  <!-- Astronaut SVG -->
-  <svg class="astronaut" viewBox="0 0 120 200">
-    <circle cx="60" cy="40" r="30" fill="#e5e7eb"/>
-    <rect x="30" y="80" width="60" height="80" rx="30" fill="#cbd5f5"/>
-    <path d="M60 160 C20 180, 10 200, 0 220"
-          stroke="#94a3b8" stroke-width="2" fill="none"/>
-  </svg>
-</div>
-
 <div class="container">
 
   <!-- HERO -->
   <div class="hero">
     <div>
-      <div class="hero-intro">Hi, this is</div>
+      <div class="hero-intro">Hello, I’m</div>
       <h1>Guru Deep <span>Ravilla</span></h1>
       <p>
-        Pursuing Master’s in Data Science<br>
+        Master’s student in Data Science<br>
         University of Europe, Berlin, Germany
       </p>
     </div>
+
     <img src="hero.jpg" alt="Guru Deep Ravilla">
   </div>
 
@@ -219,9 +192,10 @@ footer {
     <div class="card skills">
       <span class="skill">AI Agent Building</span>
       <span class="skill">Prompt Engineering</span>
-      <span class="skill">AI Automation</span>
+      <span class="skill">AI Workflow Automation</span>
       <span class="skill">Python</span>
       <span class="skill">Data Analysis</span>
+      <span class="skill">Problem Solving</span>
     </div>
   </section>
 
@@ -229,18 +203,21 @@ footer {
   <section>
     <h2>Projects</h2>
     <div class="projects">
-      <div class="card">
+
+      <div class="card project">
         <h3>AI-Powered Professional Email Drafting Assistant</h3>
         <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
-          🔗 View on GitHub
+          View on GitHub →
         </a>
       </div>
-      <div class="card">
+
+      <div class="card project">
         <h3>Hybrid Expert System – Food Nutrition</h3>
         <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
-          🔗 View on GitHub
+          View on GitHub →
         </a>
       </div>
+
     </div>
   </section>
 
@@ -248,9 +225,9 @@ footer {
   <section>
     <h2>Get in Touch</h2>
     <div class="card contact">
-      <a href="mailto:gurudeep.chowdary812@gmail.com">📧 Email</a>
-      <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">🔗 LinkedIn</a>
-      <a href="https://github.com/GurudeepRavilla" target="_blank">💻 GitHub</a>
+      <a href="mailto:gurudeep.chowdary812@gmail.com">gurudeep.chowdary812@gmail.com</a>
+      <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/GurudeepRavilla" target="_blank">GitHub</a>
     </div>
   </section>
 
@@ -259,52 +236,6 @@ footer {
   </footer>
 
 </div>
-
-<script>
-/* ===== STAR SYSTEM (3 DEPTHS) ===== */
-function createStars(canvasId, count, speed) {
-  const c = document.getElementById(canvasId);
-  const ctx = c.getContext("2d");
-
-  function resize() {
-    c.width = innerWidth;
-    c.height = innerHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  const stars = Array.from({length: count}, () => ({
-    x: Math.random()*c.width,
-    y: Math.random()*c.height,
-    r: Math.random()*1.5,
-    s: speed
-  }));
-
-  function animate() {
-    ctx.clearRect(0,0,c.width,c.height);
-    ctx.fillStyle = "#ffffff";
-    stars.forEach(star => {
-      ctx.beginPath();
-      ctx.arc(star.x, star.y, star.r, 0, Math.PI*2);
-      ctx.fill();
-      star.y -= star.s;
-      if (star.y < 0) star.y = c.height;
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
-}
-
-createStars("starsFar", 400, 0.15);
-createStars("starsMid", 600, 0.35);
-createStars("starsNear", 800, 0.7);
-
-/* ===== ROCKET SCROLL FLIGHT ===== */
-window.addEventListener("scroll", () => {
-  const rocket = document.getElementById("rocket");
-  rocket.style.transform = `translateY(${-window.scrollY * 0.6}px)`;
-});
-</script>
 
 </body>
 </html>
