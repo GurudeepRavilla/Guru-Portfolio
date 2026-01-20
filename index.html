@@ -7,65 +7,32 @@
 
 <style>
 /* ===== RESET ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* ===== BODY ===== */
 body {
   font-family: Inter, Arial, sans-serif;
-  background: #020617;
-  color: #e5e7eb;
+  background: radial-gradient(circle at top, #020617, #000000);
+  color: #f8fafc;
   overflow-x: hidden;
 }
 
-/* ===== STAR CANVAS ===== */
-#stars {
+/* ===== STAR BACKGROUND ===== */
+body::before {
+  content: "";
   position: fixed;
   inset: 0;
-  z-index: -10;
-}
-
-/* ===== SPACE OBJECTS ===== */
-.space {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -5;
-}
-
-/* Planet */
-.planet {
-  position: absolute;
-  top: 100px;
-  right: 120px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff, #7dd3fc 60%, #0ea5e9);
-  box-shadow: 0 0 120px rgba(125,211,252,.6);
-}
-
-/* Astronaut */
-.astronaut {
-  position: absolute;
-  right: 80px;
-  top: 55%;
-  font-size: 70px;
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
-  100% { transform: translateY(0); }
-}
-
-/* Rocket */
-.rocket {
-  position: absolute;
-  left: 60px;
-  bottom: -200px;
-  font-size: 70px;
-  transition: transform 0.1s linear;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 30% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 90%, #fff, transparent);
+  opacity: 0.25;
+  z-index: -1;
 }
 
 /* ===== LAYOUT ===== */
@@ -83,29 +50,40 @@ body {
   align-items: center;
 }
 
+.hero-intro {
+  font-size: 18px;
+  color: #7dd3fc;
+  margin-bottom: 10px;
+}
+
 .hero img {
   width: 100%;
   max-height: 600px;
   object-fit: cover;
   object-position: center top;
-  border-radius: 24px;
+  border-radius: 28px;
   box-shadow: 0 40px 120px rgba(56,189,248,0.35);
 }
 
 h1 {
-  font-size: 56px;
+  font-size: 58px;
+  font-weight: 700;
 }
 
-h1 span { color: #38bdf8; }
+h1 span {
+  color: #38bdf8;
+}
 
 .hero p {
   font-size: 22px;
-  margin-top: 20px;
-  color: #cbd5f5;
+  margin-top: 18px;
+  color: #e5e7eb;
 }
 
 /* ===== SECTIONS ===== */
-section { margin-top: 140px; }
+section {
+  margin-top: 140px;
+}
 
 section h2 {
   font-size: 40px;
@@ -115,24 +93,21 @@ section h2 {
 
 /* ===== CARD ===== */
 .card {
-  background: rgba(15,23,42,.85);
+  background: rgba(15,23,42,0.9);
   padding: 48px;
-  border-radius: 24px;
-  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
 }
 
-/* ===== SKILLS ===== */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+/* ===== LIST ===== */
+.card ul {
+  padding-left: 20px;
 }
 
-.skill {
-  padding: 14px 24px;
-  border-radius: 999px;
-  border: 1px solid #38bdf8;
-  background: #020617;
+.card li {
+  margin-bottom: 14px;
+  font-size: 18px;
+  color: #e5e7eb;
 }
 
 /* ===== PROJECTS ===== */
@@ -142,7 +117,7 @@ section h2 {
   gap: 40px;
 }
 
-.projects a {
+.project a {
   color: #38bdf8;
   text-decoration: none;
   font-weight: 600;
@@ -150,16 +125,16 @@ section h2 {
 
 /* ===== CONTACT ===== */
 .contact a {
-  display: inline-block;
-  margin: 10px 20px 0 0;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 12px;
   color: #38bdf8;
   text-decoration: none;
-  font-size: 18px;
 }
 
 /* ===== FOOTER ===== */
 footer {
-  margin: 160px 0 40px;
+  margin-top: 160px;
   text-align: center;
   color: #94a3b8;
 }
@@ -168,51 +143,32 @@ footer {
 
 <body>
 
-<canvas id="stars"></canvas>
-
-<div class="space">
-  <div class="planet"></div>
-  <div class="astronaut">👨‍🚀</div>
-  <div class="rocket" id="rocket">🚀</div>
-</div>
-
 <div class="container">
 
   <!-- HERO -->
   <div class="hero">
-    <img src="hero.jpg" alt="Guru Deep Ravilla">
     <div>
+      <div class="hero-intro">Hi, this is</div>
       <h1>Guru Deep <span>Ravilla</span></h1>
       <p>
         Pursuing Master’s in Data Science<br>
         University of Europe, Berlin, Germany
       </p>
     </div>
+
+    <img src="hero.jpg" alt="Guru Deep Ravilla">
   </div>
 
   <!-- ABOUT -->
   <section>
     <h2>About Me</h2>
     <div class="card">
-      <p>
-        I am a Computer Science student who enjoys visualizing data and building
-        intelligent systems for real-world problems.
-        <br><br>
-        I have hands-on experience with AI workflow automation, prompt engineering,
-        and AI agent building for everyday use cases.
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <h2>Skills</h2>
-    <div class="card skills">
-      <div class="skill">AI Agent Building</div>
-      <div class="skill">Prompt Engineering</div>
-      <div class="skill">AI Automation</div>
-      <div class="skill">Python</div>
-      <div class="skill">Data Analysis</div>
+      <ul>
+        <li>Computer Science student passionate about data and intelligent systems</li>
+        <li>Hands-on experience with AI workflow automation and prompt engineering</li>
+        <li>Built AI agents for real-world, everyday use cases</li>
+        <li>Focused on solving practical problems using technology</li>
+      </ul>
     </div>
   </section>
 
@@ -221,14 +177,14 @@ footer {
     <h2>Projects</h2>
     <div class="projects">
 
-      <div class="card">
+      <div class="card project">
         <h3>AI-Powered Professional Email Drafting Assistant</h3>
         <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
           🔗 View on GitHub
         </a>
       </div>
 
-      <div class="card">
+      <div class="card project">
         <h3>Hybrid Expert System – Food Nutrition</h3>
         <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
           🔗 View on GitHub
@@ -240,9 +196,9 @@ footer {
 
   <!-- CONTACT -->
   <section>
-    <h2>Contact</h2>
+    <h2>Get in Touch</h2>
     <div class="card contact">
-      <a href="mailto:gurudeep.chowdary812@gmail.com">📧 Email</a>
+      <a href="mailto:gurudeep.chowdary812@gmail.com">📧 gurudeep.chowdary812@gmail.com</a>
       <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">🔗 LinkedIn</a>
       <a href="https://github.com/GurudeepRavilla" target="_blank">💻 GitHub</a>
     </div>
@@ -253,46 +209,6 @@ footer {
   </footer>
 
 </div>
-
-<script>
-/* ===== STARFIELD ===== */
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-
-function resize() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
-resize();
-addEventListener("resize", resize);
-
-const stars = Array.from({length: 1000}, () => ({
-  x: Math.random()*canvas.width,
-  y: Math.random()*canvas.height,
-  r: Math.random()*1.6,
-  s: Math.random()*0.6 + 0.2
-}));
-
-function animateStars() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle = "#fff";
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI*2);
-    ctx.fill();
-    star.y -= star.s;
-    if (star.y < 0) star.y = canvas.height;
-  });
-  requestAnimationFrame(animateStars);
-}
-animateStars();
-
-/* ===== ROCKET SCROLL ===== */
-addEventListener("scroll", () => {
-  const rocket = document.getElementById("rocket");
-  rocket.style.transform = `translateY(${-scrollY * 0.5}px)`;
-});
-</script>
 
 </body>
 </html>
