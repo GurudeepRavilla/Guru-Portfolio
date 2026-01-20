@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Guru Deep Ravilla | Space Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,23 +9,23 @@
 /* ================= RESET ================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ================= BODY ================= */
+/* ================= BASE ================= */
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
   background: #000;
   color: #e5e7eb;
   overflow-x: hidden;
 }
 
 /* ================= STAR CANVAS ================= */
-canvas {
+#galaxy {
   position: fixed;
   inset: 0;
   z-index: -10;
 }
 
 /* ================= SPACE OBJECTS ================= */
-.space-layer {
+.space {
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -37,35 +37,37 @@ canvas {
   position: absolute;
   top: 80px;
   right: 120px;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #cbd5f5 60%, #64748b);
-  box-shadow: 0 0 120px rgba(203,213,245,0.8);
+  background:
+    radial-gradient(circle at 30% 30%, #ffffff, #cbd5f5 55%, #64748b);
+  box-shadow: 0 0 120px rgba(203,213,245,.9);
+  transform: translateY(var(--moonY));
+}
+
+/* Rocket (SVG container) */
+.rocket {
+  position: absolute;
+  left: 60px;
+  bottom: -240px;
+  width: 80px;
+  transform: translateY(var(--rocketY));
 }
 
 /* Astronaut */
 .astronaut {
   position: absolute;
-  right: 60px;
+  right: 80px;
   top: 55%;
-  font-size: 90px;
+  width: 120px;
   animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
   0% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
+  50% { transform: translateY(-30px); }
   100% { transform: translateY(0); }
-}
-
-/* Rocket */
-.rocket {
-  position: absolute;
-  left: 60px;
-  bottom: -200px;
-  font-size: 100px;
-  transition: transform 0.1s linear;
 }
 
 /* ================= LAYOUT ================= */
@@ -76,21 +78,36 @@ canvas {
 }
 
 /* ================= HERO ================= */
-  <div class="hero">
-    <img src="./hero.jpg" alt="Guru Deep Ravilla">
-    <div>
-        <h1>Guru Deep <span>Ravilla</span></h1>
-        <p>
-            Pursuing Master’s in Data Science<br>
-            University of Europe, Berlin, Germany
-        </p>
-    </div>
-</div>
-  
-/* ================= SECTIONS ================= */
-section {
-  margin-top: 180px;
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
 }
+
+.hero img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 40px 120px rgba(56,189,248,.4);
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.1;
+}
+
+.hero span { color: #38bdf8; }
+
+.hero p {
+  margin-top: 20px;
+  font-size: 22px;
+  color: #cbd5f5;
+}
+
+/* ================= SECTIONS ================= */
+section { margin-top: 180px; }
 
 section h2 {
   font-size: 42px;
@@ -100,11 +117,11 @@ section h2 {
 
 /* ================= GLASS CARD ================= */
 .card {
-  background: rgba(15,23,42,0.75);
+  background: rgba(15,23,42,.7);
   backdrop-filter: blur(18px);
   padding: 48px;
   border-radius: 28px;
-  box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 90px rgba(0,0,0,.6);
 }
 
 /* ================= SKILLS ================= */
@@ -118,7 +135,7 @@ section h2 {
   padding: 14px 26px;
   border-radius: 999px;
   border: 1px solid #38bdf8;
-  background: rgba(2,6,23,0.9);
+  background: rgba(2,6,23,.9);
 }
 
 /* ================= PROJECTS ================= */
@@ -145,21 +162,49 @@ footer {
 
 <body>
 
-<!-- STAR CANVAS -->
-<canvas id="stars"></canvas>
+<!-- STARFIELD -->
+<canvas id="galaxy"></canvas>
 
 <!-- SPACE OBJECTS -->
-<div class="space-layer">
+<div class="space">
   <div class="moon"></div>
-  <div class="astronaut">👨‍🚀</div>
-  <div class="rocket" id="rocket">🚀🔥</div>
+
+  <!-- Rocket SVG -->
+  <svg class="rocket" viewBox="0 0 64 128">
+    <defs>
+      <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#facc15"/>
+        <stop offset="100%" stop-color="#ef4444"/>
+      </linearGradient>
+    </defs>
+    <polygon points="32,0 50,40 32,32 14,40" fill="#e5e7eb"/>
+    <rect x="22" y="40" width="20" height="50" rx="10" fill="#94a3b8"/>
+    <polygon points="22,90 32,120 42,90" fill="url(#flame)">
+      <animateTransform
+        attributeName="transform"
+        type="scale"
+        from="1"
+        to="1.3"
+        dur="0.15s"
+        repeatCount="indefinite"
+        direction="alternate"/>
+    </polygon>
+  </svg>
+
+  <!-- Astronaut SVG -->
+  <svg class="astronaut" viewBox="0 0 100 160">
+    <circle cx="50" cy="30" r="25" fill="#e5e7eb"/>
+    <rect x="25" y="60" width="50" height="70" rx="20" fill="#cbd5f5"/>
+    <line x1="25" y1="90" x2="5" y2="120" stroke="#cbd5f5" stroke-width="8"/>
+    <line x1="75" y1="90" x2="95" y2="120" stroke="#cbd5f5" stroke-width="8"/>
+  </svg>
 </div>
 
 <div class="container">
 
   <!-- HERO -->
   <div class="hero">
-    <img src="./images/hero.jpg" alt="Guru Deep Ravilla">
+    <img src="hero.jpg" alt="Guru Deep Ravilla">
     <div>
       <h1>Guru Deep <span>Ravilla</span></h1>
       <p>
@@ -174,11 +219,11 @@ footer {
     <h2>About Me</h2>
     <div class="card">
       <p>
-        I am a Computer Science student who enjoys visualizing data, understanding
-        intelligent systems, and applying AI to real-world problems.
+        I am a Computer Science student focused on visualizing data,
+        understanding intelligent systems, and applying AI to real-world problems.
         <br><br>
         I have hands-on experience with AI workflow automation, prompt engineering,
-        and building AI agents for everyday use cases.
+        and building AI agents for everyday use.
         <br><br>
         I care deeply about meaningful, practical problem solving.
       </p>
@@ -201,10 +246,8 @@ footer {
   <section>
     <h2>Projects</h2>
     <div class="projects">
-
       <div class="card project">
         <h3>AI-Powered Professional Email Drafting Assistant</h3>
-        <p>AI system for drafting professional emails.</p>
         <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
           View GitHub →
         </a>
@@ -212,41 +255,39 @@ footer {
 
       <div class="card project">
         <h3>Hybrid Expert System – Food Nutrition</h3>
-        <p>Rule-based expert system for nutrition decision support.</p>
         <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
           View GitHub →
         </a>
       </div>
-
     </div>
   </section>
 
   <footer>
-    © 2026 Guru Deep Ravilla · Exploring beyond Earth 🌌
+    © 2026 Guru Deep Ravilla · Exploring Beyond Earth
   </footer>
 
 </div>
 
 <script>
-/* ================= STARFIELD (REAL) ================= */
-const canvas = document.getElementById("stars");
+/* ================= GALAXY STARFIELD ================= */
+const canvas = document.getElementById("galaxy");
 const ctx = canvas.getContext("2d");
 
 function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 }
 resize();
-window.addEventListener("resize", resize);
+addEventListener("resize", resize);
 
-const stars = Array.from({length: 800}, () => ({
+const stars = Array.from({length: 1200}, () => ({
   x: Math.random()*canvas.width,
   y: Math.random()*canvas.height,
   r: Math.random()*1.6,
-  s: Math.random()*0.4 + 0.1
+  s: Math.random()*0.6 + 0.2
 }));
 
-function drawStars() {
+function animateStars() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
   ctx.fillStyle = "#fff";
   stars.forEach(star => {
@@ -256,14 +297,14 @@ function drawStars() {
     star.y -= star.s;
     if (star.y < 0) star.y = canvas.height;
   });
-  requestAnimationFrame(drawStars);
+  requestAnimationFrame(animateStars);
 }
-drawStars();
+animateStars();
 
-/* ================= ROCKET SCROLL ================= */
-window.addEventListener("scroll", () => {
-  const rocket = document.getElementById("rocket");
-  rocket.style.transform = `translateY(${-window.scrollY * 0.6}px)`;
+/* ================= SCROLL PARALLAX ================= */
+addEventListener("scroll", () => {
+  document.documentElement.style.setProperty("--rocketY", `${-scrollY * 0.6}px`);
+  document.documentElement.style.setProperty("--moonY", `${scrollY * 0.15}px`);
 });
 </script>
 
