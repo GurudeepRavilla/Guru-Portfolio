@@ -42,10 +42,10 @@ body {
   object-fit: cover;
   object-position: center top;
   border-radius: 14px;
-  filter: grayscale(100%);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  border: 1px solid #ffffff; /* white outline */
 }
 
+/* IMPORTANT: NO FILTERS — IMAGE IS NORMAL COLOR */
 .hero-intro {
   font-size: 14px;
   letter-spacing: 2px;
@@ -60,14 +60,10 @@ h1 {
   letter-spacing: -1px;
 }
 
-h1 span {
-  color: #ffffff;
-}
-
 .hero p {
   margin-top: 20px;
   font-size: 20px;
-  color: #cfcfcf;
+  color: #d4d4d4;
 }
 
 /* ===== SECTIONS ===== */
@@ -79,7 +75,6 @@ section h2 {
   font-size: 34px;
   font-weight: 600;
   margin-bottom: 28px;
-  color: #ffffff;
 }
 
 /* ===== CARD ===== */
@@ -87,7 +82,7 @@ section h2 {
   background: #111111;
   padding: 42px;
   border-radius: 14px;
-  border: 1px solid #1f1f1f;
+  border: 1px solid #ffffff; /* white outline */
 }
 
 /* ===== LIST ===== */
@@ -98,7 +93,7 @@ section h2 {
 .card li {
   margin-bottom: 14px;
   font-size: 18px;
-  color: #d4d4d4;
+  color: #e5e5e5;
 }
 
 /* ===== SKILLS ===== */
@@ -111,9 +106,10 @@ section h2 {
 .skill {
   padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid #2a2a2a;
-  color: #e5e5e5;
+  border: 1px solid #ffffff; /* white outline */
+  color: #ffffff;
   font-size: 15px;
+  background: transparent;
 }
 
 /* ===== PROJECTS ===== */
@@ -126,32 +122,24 @@ section h2 {
 .project h3 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #ffffff;
 }
 
 .project a {
-  color: #e5e5e5;
-  text-decoration: none;
-  border-bottom: 1px solid #444;
-  padding-bottom: 2px;
-}
-
-.project a:hover {
   color: #ffffff;
-  border-color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid #ffffff;
+  padding-bottom: 2px;
 }
 
 /* ===== CONTACT ===== */
 .contact a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 18px;
   margin-bottom: 14px;
-  color: #e5e5e5;
-  text-decoration: none;
-}
-
-.contact a:hover {
   color: #ffffff;
+  text-decoration: none;
 }
 
 /* ===== FOOTER ===== */
@@ -179,7 +167,7 @@ footer {
   <div class="hero">
     <div>
       <div class="hero-intro">Hello, I’m</div>
-      <h1>Guru Deep <span>Ravilla</span></h1>
+      <h1>Guru Deep Ravilla</h1>
       <p>
         Master’s student in Data Science<br>
         University of Europe, Berlin, Germany
@@ -223,14 +211,14 @@ footer {
       <div class="card project">
         <h3>AI-Powered Professional Email Drafting Assistant</h3>
         <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
-          View on GitHub
+          🔗 View on GitHub
         </a>
       </div>
 
       <div class="card project">
         <h3>Hybrid Expert System – Food Nutrition</h3>
         <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
-          View on GitHub
+          🔗 View on GitHub
         </a>
       </div>
 
@@ -241,9 +229,9 @@ footer {
   <section>
     <h2>Get in Touch</h2>
     <div class="card contact">
-      <a href="mailto:gurudeep.chowdary812@gmail.com">gurudeep.chowdary812@gmail.com</a>
-      <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/GurudeepRavilla" target="_blank">GitHub</a>
+      <a href="mailto:gurudeep.chowdary812@gmail.com">📧 Email — gurudeep.chowdary812@gmail.com</a>
+      <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">🔗 LinkedIn</a>
+      <a href="https://github.com/GurudeepRavilla" target="_blank">💻 GitHub</a>
     </div>
   </section>
 
