@@ -1,105 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Guru Deep Ravilla | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Guru Deep Ravilla | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-    }
+<style>
+/* ===== RESET ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 100px 24px;
-    }
+/* ===== BODY ===== */
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #020617;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
 
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
+/* ===== STAR CANVAS ===== */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+}
 
-    .hero img {
-      width: 100%;
-      max-height: 520px;
-      object-fit: cover;
-      border-radius: 24px;
-      box-shadow: 0 30px 80px rgba(56,189,248,0.25);
-    }
+/* ===== SPACE OBJECTS ===== */
+.space {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -5;
+}
 
-    h1 {
-      font-size: 56px;
-      margin: 0;
-    }
+/* Planet */
+.planet {
+  position: absolute;
+  top: 100px;
+  right: 120px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #7dd3fc 60%, #0ea5e9);
+  box-shadow: 0 0 120px rgba(125,211,252,.6);
+}
 
-    h1 span {
-      color: #38bdf8;
-    }
+/* Astronaut */
+.astronaut {
+  position: absolute;
+  right: 80px;
+  top: 55%;
+  font-size: 70px;
+  animation: float 6s ease-in-out infinite;
+}
 
-    .hero p {
-      font-size: 22px;
-      margin-top: 20px;
-      color: #cbd5f5;
-    }
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+  100% { transform: translateY(0); }
+}
 
-    section {
-      margin-top: 140px;
-    }
+/* Rocket */
+.rocket {
+  position: absolute;
+  left: 60px;
+  bottom: -200px;
+  font-size: 70px;
+  transition: transform 0.1s linear;
+}
 
-    section h2 {
-      font-size: 40px;
-      margin-bottom: 24px;
-      color: #38bdf8;
-    }
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 100px 24px;
+}
 
-    .card {
-      background: rgba(15,23,42,0.85);
-      padding: 48px;
-      border-radius: 24px;
-    }
+/* ===== HERO ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
 
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+.hero img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 24px;
+  box-shadow: 0 40px 120px rgba(56,189,248,0.35);
+}
 
-    .skill {
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: 1px solid #38bdf8;
-      background: #020617;
-    }
+h1 {
+  font-size: 56px;
+}
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-      gap: 40px;
-    }
+h1 span { color: #38bdf8; }
 
-    .projects a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: 600;
-    }
+.hero p {
+  font-size: 22px;
+  margin-top: 20px;
+  color: #cbd5f5;
+}
 
-    footer {
-      margin: 160px 0 40px;
-      text-align: center;
-      color: #94a3b8;
-    }
-  </style>
+/* ===== SECTIONS ===== */
+section { margin-top: 140px; }
+
+section h2 {
+  font-size: 40px;
+  margin-bottom: 24px;
+  color: #38bdf8;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(15,23,42,.85);
+  padding: 48px;
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.skill {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid #38bdf8;
+  background: #020617;
+}
+
+/* ===== PROJECTS ===== */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 40px;
+}
+
+.projects a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== CONTACT ===== */
+.contact a {
+  display: inline-block;
+  margin: 10px 20px 0 0;
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  margin: 160px 0 40px;
+  text-align: center;
+  color: #94a3b8;
+}
+</style>
 </head>
 
 <body>
+
+<canvas id="stars"></canvas>
+
+<div class="space">
+  <div class="planet"></div>
+  <div class="astronaut">👨‍🚀</div>
+  <div class="rocket" id="rocket">🚀</div>
+</div>
 
 <div class="container">
 
@@ -149,17 +224,27 @@
       <div class="card">
         <h3>AI-Powered Professional Email Drafting Assistant</h3>
         <a href="https://github.com/GurudeepRavilla/AI-Powered-Professional-Email-Drafting-Assistant-1-" target="_blank">
-          View GitHub →
+          🔗 View on GitHub
         </a>
       </div>
 
       <div class="card">
         <h3>Hybrid Expert System – Food Nutrition</h3>
         <a href="https://github.com/GurudeepRavilla/Hybrid-Expert-System-Food-Nutrition" target="_blank">
-          View GitHub →
+          🔗 View on GitHub
         </a>
       </div>
 
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <h2>Contact</h2>
+    <div class="card contact">
+      <a href="mailto:gurudeep.chowdary812@gmail.com">📧 Email</a>
+      <a href="https://www.linkedin.com/in/guru-deep-ravilla-303691368/" target="_blank">🔗 LinkedIn</a>
+      <a href="https://github.com/GurudeepRavilla" target="_blank">💻 GitHub</a>
     </div>
   </section>
 
@@ -168,6 +253,46 @@
   </footer>
 
 </div>
+
+<script>
+/* ===== STARFIELD ===== */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
+
+const stars = Array.from({length: 1000}, () => ({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()*1.6,
+  s: Math.random()*0.6 + 0.2
+}));
+
+function animateStars() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#fff";
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI*2);
+    ctx.fill();
+    star.y -= star.s;
+    if (star.y < 0) star.y = canvas.height;
+  });
+  requestAnimationFrame(animateStars);
+}
+animateStars();
+
+/* ===== ROCKET SCROLL ===== */
+addEventListener("scroll", () => {
+  const rocket = document.getElementById("rocket");
+  rocket.style.transform = `translateY(${-scrollY * 0.5}px)`;
+});
+</script>
 
 </body>
 </html>
